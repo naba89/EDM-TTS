@@ -75,7 +75,7 @@ dataset_args:
   path: edm_tts/datasets/librilight.py
   name: all
   split: train
-  segment_length: 60.0
+  segment_length: 5.0
   num_proc: 128
   data_dir: data/libri-light/unlab
   cache_dir: cache/libri-light
