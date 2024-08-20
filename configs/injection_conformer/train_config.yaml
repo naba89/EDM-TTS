@@ -52,9 +52,9 @@ do_train: true
 ignore_data_skip: true
 evaluation_strategy: "no"
 label_names: [acoustic_tokens]
-per_device_train_batch_size: 32
+per_device_train_batch_size: 16
 per_device_eval_batch_size: 16
-gradient_accumulation_steps: 1
+gradient_accumulation_steps: 2
 ddp_find_unused_parameters: false
 gradient_checkpointing: false
 gradient_checkpointing_kwargs:
