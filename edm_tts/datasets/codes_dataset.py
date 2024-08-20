@@ -9,6 +9,7 @@ import os
 
 import datasets
 import torch
+import numpy as np
 
 
 class CodesDatasetConfig(datasets.BuilderConfig):
@@ -56,7 +57,7 @@ class CodesDataset(datasets.GeneratorBasedBuilder):
                 f"dataset. Manual download instructions: {self.manual_download_instructions}"
             )
 
-        train_data_dirs = glob.glob(os.path.join(base_data_dir, "**", "*.pt"), recursive=True)
+        train_data_dirs = glob.glob(os.path.join(base_data_dir, "**", "*.npy"), recursive=True)
 
         return [
             datasets.SplitGenerator(
@@ -67,9 +68,10 @@ class CodesDataset(datasets.GeneratorBasedBuilder):
 
     def _generate_examples(self, data_dirs):
         for key, path in enumerate(data_dirs):
-            id_ = path.split("/")[-1].replace(".pt", "")
+            id_ = path.split("/")[-1].replace(".npy", "")
 
-            data = torch.load(path, map_location='cpu')
+            # data = torch.load(path, map_location='cpu')
+            data = np.load(path, allow_pickle=True).item()
             for i, (k, v) in enumerate(data.items()):
                 acoustic_tokens = v["acoustic_codes"].squeeze(0).transpose(0, 1)
                 semantic_tokens = v["semantic_codes"].transpose(0, 1)
