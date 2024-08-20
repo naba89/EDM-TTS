@@ -9,8 +9,6 @@ def split_jsonl_gz_file(input_file, lines_per_chunk=10000):
     os.makedirs(output_dir, exist_ok=True)
     base_name = os.path.basename(input_file).rsplit('.', 2)[0]  # Remove .jsonl.gz
 
-    print(output_dir, base_name)
-
     with gzip.open(input_file, 'rt') as infile:
         file_count = 0
         line_count = 0
