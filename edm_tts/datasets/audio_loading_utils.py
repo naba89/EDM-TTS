@@ -14,8 +14,6 @@ def load_code_segments(examples, segment_length=None, random_segment=False,
     acoustic_tokens = torch.as_tensor(np.stack(examples['acoustic_tokens'], axis=0)).long()
     semantic_tokens = torch.as_tensor(np.stack(examples['semantic_tokens'], axis=0)).squeeze(-1).long()
 
-    print(acoustic_tokens.shape, semantic_tokens.shape)
-
     # above will anyways fail if the tokens are not of the same length
     assert acoustic_tokens.shape[0] == 1, "For now, batch size must be 1"
 
