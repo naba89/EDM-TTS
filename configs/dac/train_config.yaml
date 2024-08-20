@@ -76,6 +76,7 @@ dataset_args:
   name: all
   split: train
   segment_length: 5.0
+  streaming: true
   data_dir: data/libri-light/unlab
 
 remove_columns:

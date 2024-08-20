@@ -215,7 +215,6 @@ def main():
 
     with training_args.main_process_first(desc="dataset loading"):
         dataset = load_dataset(**data_args.dataset_args,
-                               # world_size=training_args.world_size,
                                trust_remote_code=True)
         dataset_dict = dataset.train_test_split(test_size=data_args.validation_split)
 
