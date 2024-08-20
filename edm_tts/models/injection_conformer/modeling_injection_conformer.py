@@ -28,7 +28,8 @@ class InjectionConformerModel(PreTrainedModel, ModuleUtilsMixin):
     def __init__(self, config):
         super().__init__(config)
 
-        self.acoustic_model = DAC.from_pretrained(config.acoustic_model_path).eval()
+        # self.acoustic_model = DAC.from_pretrained(config.acoustic_model_path).eval()
+        self.acoustic_model = DAC.from_pretrained("subatomicseer/acoustic_tokenizer").eval()
 
         self.acoustic_size = self.acoustic_model.latent_dim
         self.num_codevectors = self.acoustic_model.codebook_size
