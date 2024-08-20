@@ -11,7 +11,7 @@ import torch
 
 
 class TextSpeechCodesDatasetConfig(datasets.BuilderConfig):
-    """BuilderConfig for Text-SpeechCodes dataset."""
+    """BuilderConfig for Text-Speech Codes dataset."""
 
     def __init__(self, **kwargs):
         super(TextSpeechCodesDatasetConfig, self).__init__(**kwargs)

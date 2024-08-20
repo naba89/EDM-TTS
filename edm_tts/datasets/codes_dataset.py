@@ -12,7 +12,7 @@ import torch
 
 
 class CodesDatasetConfig(datasets.BuilderConfig):
-    """BuilderConfig for Libri-Light."""
+    """BuilderConfig for Codes."""
 
     def __init__(self, **kwargs):
         super(CodesDatasetConfig, self).__init__(**kwargs)
