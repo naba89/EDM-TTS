@@ -154,7 +154,6 @@ def main():
 
     with training_args.main_process_first(desc="dataset loading"):
         dataset = load_dataset(**data_args.dataset_args,
-                               world_size=training_args.world_size,
                                trust_remote_code=True)
         train_dataset = dataset['train']
         train_dataset = train_dataset.shuffle(buffer_size=128)
