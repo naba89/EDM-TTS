@@ -65,16 +65,8 @@ class LibriLight(datasets.GeneratorBasedBuilder):
             data_dirs = glob.glob(os.path.join(base_data_dir, "small", "**", "**", "*.flac")) + \
                         glob.glob(os.path.join(base_data_dir, "medium", "**", "**", "*.flac")) + \
                         glob.glob(os.path.join(base_data_dir, "large", "**", "**", "*.flac"))
-
-            # data_dirs = [
-            #     os.path.join(base_data_dir, "small"),
-            #     os.path.join(base_data_dir, "medium"),
-            #     os.path.join(base_data_dir, "large"),
-            # ]
         else:
             data_dirs = glob.glob(os.path.join(base_data_dir, self.config.name, "**", "**", "*.flac"))
-            # data_dirs = [os.path.join(base_data_dir, self.config.name)]
-
         return [
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
@@ -83,9 +75,6 @@ class LibriLight(datasets.GeneratorBasedBuilder):
         ]
 
     def _generate_examples(self, data_dirs):
-        # paths = []
-        # for data_dir in data_dirs:
-        #     paths.extend(glob.glob(os.path.join(data_dir, "**", "**", "*.flac")))
         for key, path in enumerate(data_dirs):
             path_split = path.split("/")
             id_ = '/'.join(path_split[-4:]).replace(".flac", "")
