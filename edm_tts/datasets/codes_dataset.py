@@ -57,8 +57,7 @@ class CodesDataset(datasets.GeneratorBasedBuilder):
                 f"dataset. Manual download instructions: {self.manual_download_instructions}"
             )
 
-        # train_data_dirs = glob.glob(os.path.join(base_data_dir, "**", "*.pt"), recursive=True)
-        train_data_dirs = glob.glob(os.path.join(base_data_dir, "**", "*.npy"), recursive=True)
+        train_data_dirs = glob.glob(os.path.join(base_data_dir, "**", "*.pt"), recursive=True)
 
         return [
             datasets.SplitGenerator(
@@ -69,28 +68,16 @@ class CodesDataset(datasets.GeneratorBasedBuilder):
 
     def _generate_examples(self, data_dirs):
         for key, path in enumerate(data_dirs):
-            # id_ = path.split("/")[-1].replace(".pt", "")
-            id_ = path.split("/")[-1].replace(".npy", "")
+            id_ = path.split("/")[-1].replace(".pt", "")
 
-            # data = torch.load(path, map_location='cpu')
-            # for i, (k, v) in enumerate(data.items()):
-            #     acoustic_tokens = v["acoustic_codes"].squeeze(0).transpose(0, 1)
-            #     semantic_tokens = v["semantic_codes"].transpose(0, 1)
-            #
-            #     yield f"{id_}_{i}", {
-            #         "id": f"{id_}_{i}",
-            #         "length": acoustic_tokens.shape[0],
-            #         "acoustic_tokens": acoustic_tokens,
-            #         "semantic_tokens": semantic_tokens,
-            #     }
+            data = torch.load(path, map_location='cpu')
+            for i, (k, v) in enumerate(data.items()):
+                acoustic_tokens = v["acoustic_codes"].squeeze(0).transpose(0, 1)
+                semantic_tokens = v["semantic_codes"].transpose(0, 1)
 
-            data = np.load(path, allow_pickle=True).item()
-            for i, (acoustic_tokens, semantic_tokens) in enumerate(zip(data["acoustic_codes"],
-                                                                       data["semantic_codes"])):
-                _id_ = f"{id_}_{i}"
-                yield _id_, {
-                    "id": _id_,
-                    "length": acoustic_tokens.shape[1],
-                    "acoustic_tokens": acoustic_tokens.transpose(0, 1),
-                    "semantic_tokens": semantic_tokens[:, None],
+                yield f"{id_}_{i}", {
+                    "id": f"{id_}_{i}",
+                    "length": acoustic_tokens.shape[0],
+                    "acoustic_tokens": acoustic_tokens,
+                    "semantic_tokens": semantic_tokens,
                 }
