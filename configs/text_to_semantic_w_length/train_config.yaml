@@ -42,6 +42,7 @@ dataset_args:
   name: all
   num_proc: 128
   data_dir: data/libriheavy_codes
+  cache_dir: cache/libriheavy_codes
 
 
 preprocessing_only: false
