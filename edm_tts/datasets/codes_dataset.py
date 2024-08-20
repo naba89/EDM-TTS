@@ -72,8 +72,8 @@ class CodesDataset(datasets.GeneratorBasedBuilder):
 
             data = torch.load(path, map_location='cpu')
             for i, (k, v) in enumerate(data.items()):
-                acoustic_tokens = v["acoustic_codes"].squeeze(0).transpose(0, 1)
-                semantic_tokens = v["semantic_codes"].transpose(0, 1)
+                acoustic_tokens = v["acoustic_codes"].transpose(0, 1)
+                semantic_tokens = v["semantic_codes"][..., None]
 
                 yield f"{id_}_{i}", {
                     "id": f"{id_}_{i}",
