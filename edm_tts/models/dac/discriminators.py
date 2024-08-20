@@ -6,7 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torchaudio
 from einops import rearrange
-from torch.nn.utils import weight_norm
+from torch.nn.utils.parametrizations import weight_norm
 from transformers import PreTrainedModel, PretrainedConfig, AutoConfig, AutoModel
 
 
