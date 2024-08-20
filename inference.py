@@ -17,9 +17,13 @@ def main():
     argparser.add_argument("-s", "--speaker_prompt", type=str, required=True)
     argparser.add_argument("-t", "--text", type=str, required=True)
     argparser.add_argument("-o", "--output", type=str, required=True)
-    argparser.add_argument("--codec_model", type=str, default="exp/edm_tts/dac/best_model")
-    argparser.add_argument("--t2s_model", type=str, default="exp/edm_tts/text_to_semantic_w_length/")
-    argparser.add_argument("--s2a_model", type=str, default="exp/edm_tts/injection_conformer/")
+    # argparser.add_argument("--codec_model", type=str, default="exp/edm_tts/dac/best_model")
+    # argparser.add_argument("--t2s_model", type=str, default="exp/edm_tts/text_to_semantic_w_length/")
+    # argparser.add_argument("--s2a_model", type=str, default="exp/edm_tts/injection_conformer/")
+
+    argparser.add_argument("--codec_model", type=str, default="subatomicseer/acoustic_tokenizer")
+    argparser.add_argument("--t2s_model", type=str, default='/data/umeiro0/users/nabarun/projects/github/aaai/exp/aaai/text_to_semantic/libriheavy_text_to_semantic_w_length/checkpoint-300000')
+    argparser.add_argument("--s2a_model", type=str, default="/data/umeiro0/users/nabarun/projects/github/aaai/exp/aaai/lightning_speech_hubert_dac_ll60k/checkpoint-100000")
 
     args = argparser.parse_args()
 
