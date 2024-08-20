@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 def split_jsonl_gz_file(input_file, lines_per_chunk=10000):
     # Extract directory and base filename
-    output_dir = os.path.dirname(input_file) + os.path.split(input_file)[1].split('.')[0].split('_')[-1]
+    output_dir = os.path.dirname(input_file) + os.sep + os.path.split(input_file)[1].split('.')[0].split('_')[-1]
     base_name = os.path.basename(input_file).rsplit('.', 2)[0]  # Remove .jsonl.gz
 
     print(output_dir, base_name)
