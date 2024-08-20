@@ -31,6 +31,7 @@ def get_dataset_args(dataset_name, split):
             "split": split,
             "data_dir": "data/libri-light/unlab",
             "streaming": False,
+            "cache_dir": "cache/librilight",
         }
     elif dataset_name == "libriheavy-small":  # 122526
         return {
@@ -39,6 +40,7 @@ def get_dataset_args(dataset_name, split):
             "split": split,
             "data_dir": "data/libri-light/unlab",
             "streaming": False,
+            "cache_dir": "cache/libriheavy",
         }
     elif dataset_name == "libriheavy-medium":  # 1101040
         return {
@@ -47,6 +49,7 @@ def get_dataset_args(dataset_name, split):
             "split": split,
             "data_dir": "data/libri-light/unlab",
             "streaming": False,
+            "cache_dir": "cache/libriheavy",
         }
     elif dataset_name == "libriheavy-large":  # 11156939
         return {
@@ -55,6 +58,7 @@ def get_dataset_args(dataset_name, split):
             "split": split,
             "data_dir": "data/libri-light/unlab",
             "streaming": False,
+            "cache_dir": "cache/libriheavy",
         }
     else:
         raise ValueError(f"Unknown dataset: {dataset_name}")
