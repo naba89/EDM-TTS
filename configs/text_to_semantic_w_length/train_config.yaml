@@ -41,7 +41,7 @@ dataset_args:
   path: edm_tts/datasets/text_speech_codes_dataset.py
   name: all
   num_proc: 128
-  data_dir: data/libriheavy_codes
+  data_dir: /data/utsubo0/datasets/libriheavy_codes/
   cache_dir: cache/libriheavy_codes
 
 

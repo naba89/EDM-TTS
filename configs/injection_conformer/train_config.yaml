@@ -37,7 +37,7 @@ dataset_args:
   name: all
   streaming: True
   n_val_shards: 0
-  data_dir: data/librilight_codes
+  data_dir: /data/umeiro0/datasets/libri-light/unlab-codes
   cache_dir: cache/librilight_codes
 
 training_segment_length: 15.36
