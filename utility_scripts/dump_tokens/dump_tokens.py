@@ -37,7 +37,7 @@ def get_dataset_args(dataset_name, split):
             "path": "edm_tts/datasets/libriheavy.py",
             "name": "small",
             "split": split,
-            "data_dir": "/data/libri-light/unlab",
+            "data_dir": "data/libri-light/unlab",
             "streaming": False,
         }
     elif dataset_name == "libriheavy-medium":  # 1101040
@@ -45,7 +45,7 @@ def get_dataset_args(dataset_name, split):
             "path": "edm_tts/datasets/libriheavy.py",
             "name": "medium",
             "split": split,
-            "data_dir": "/data/libri-light/unlab",
+            "data_dir": "data/libri-light/unlab",
             "streaming": False,
         }
     elif dataset_name == "libriheavy-large":  # 11156939
@@ -53,7 +53,7 @@ def get_dataset_args(dataset_name, split):
             "path": "edm_tts/datasets/libriheavy.py",
             "name": "large",
             "split": split,
-            "data_dir": "/data/libri-light/unlab",
+            "data_dir": "data/libri-light/unlab",
             "streaming": False,
         }
     else:
