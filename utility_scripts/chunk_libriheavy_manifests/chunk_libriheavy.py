@@ -34,4 +34,5 @@ if __name__ == "__main__":
                    'data/libri-light/unlab/libriheavy/libriheavy_cuts_large.jsonl.gz']
 
     for input_file in input_files:
-        split_jsonl_gz_file(input_file, lines_per_chunk=100000)
+        if os.path.exists(input_file):
+            split_jsonl_gz_file(input_file, lines_per_chunk=100000)
