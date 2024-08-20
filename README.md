@@ -16,7 +16,9 @@
     ```
 
 ## Data Preparation
-**NOTE**: In case datasets are already downloaded to different paths, you have to search and replace the paths accordingly in the scripts or create symlinks.
+**NOTE-1**: In case datasets are already downloaded to different paths, you have to search and replace the paths accordingly in the scripts or create symlinks.
+
+**NOTE-2**: The following steps will download extremely large datasets. Make sure you have enough disk space (`5~6 Tera Bytes`).
 
 1. Download the LibriSpeech dataset from [here](https://www.openslr.org/12) and extract to `data/librispeech/`
    ```bash

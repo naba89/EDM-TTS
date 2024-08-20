@@ -1,28 +1,28 @@
 {
   "bos_token_id": 1,
   "eos_token_id": 2,
-  "hidden_size": 384,
+  "hidden_size": 512,
   "length_predictor_args": {
     "attn_dropout": 0.0,
     "attn_flash": true,
     "conv_dropout": 0.0,
     "conv_kernel_size": 5,
     "depth": 4,
-    "dim_head": 48,
+    "dim_head": 32,
     "ff_dropout": 0.0,
     "ff_mult": 4,
-    "heads": 8
+    "heads": 16
   },
   "main_encoder_args": {
     "attn_dropout": 0.0,
     "attn_flash": true,
     "conv_dropout": 0.0,
     "conv_kernel_size": 5,
-    "depth": 12,
-    "dim_head": 48,
+    "depth": 8,
+    "dim_head": 32,
     "ff_dropout": 0.0,
     "ff_mult": 4,
-    "heads": 8
+    "heads": 16
   },
   "model_type": "text_to_semantic_w_length",
   "pad_token_id": 0,
