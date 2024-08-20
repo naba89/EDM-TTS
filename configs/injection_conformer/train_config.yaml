@@ -12,7 +12,7 @@ model_name_or_path: configs/injection_conformer/base_config
 cache_dir: cache/huggingface
 
 extra_model_params:
-  acoustic_model_path: subatomicseer/acoustic_tokenizer
+  acoustic_model_path: exp/edm_tts/dac/best_model
   num_semantic_tokens: 1024
   hidden_size: 1024
   injection_layers: [4, 7, 10, 13]
@@ -37,7 +37,7 @@ dataset_args:
   path: edm_tts/datasets/codes_dataset.py
   name: all
   streaming: True
-  data_dir: /data/umeiro0/datasets/libri-light/unlab-codes
+  data_dir: data/librilight_codes
   cache_dir: cache/librilight_codes
 
 training_segment_length: 15.36
