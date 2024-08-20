@@ -27,7 +27,7 @@ def get_dataset_args(dataset_name, split):
     if dataset_name == "librilight":
         return {
             "path": "edm_tts/datasets/librilight.py",
-            "name": "full",
+            "name": "all",
             "split": split,
             "data_dir": "data/libri-light/unlab",
             "streaming": False,
