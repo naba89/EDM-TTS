@@ -75,8 +75,7 @@ dataset_args:
   path: edm_tts/datasets/librilight.py
   name: all
   split: train
-  segment_length: 5.0
-  streaming: true
+  segment_length: 60.0
   data_dir: data/libri-light/unlab
 
 remove_columns:
