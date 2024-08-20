@@ -66,16 +66,19 @@
 1. Train the Codec:
     ```bash
     # Check the script and config files for further customization
+    # Does not use DeepSpeed
     accelerate launch --config_file configs/acc_cfg.yaml run_codec_training.py configs/dac/train_config.yaml
     ```
 2. Train the Semantic-to-Acoustic model (Injection Conformer)
     ```bash
     # Check the script and config files for further customization
+    # Uses DeepSpeed
     accelerate launch --config_file configs/acc_cfg_deepspeed.yaml run_semantic_to_acoustic_training.py configs/injection_conformer/train_config.yaml
     ```
 3. Train the Text-to-Semantic model
     ```bash
     # Check the script and config files for further customization
+    # Uses DeepSpeed
     accelerate launch --config_file configs/acc_cfg_deepspeed.yaml run_text_to_semantic_training.py configs/text_to_semantic_w_length/train_config.yaml
     ```
    
