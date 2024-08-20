@@ -1,5 +1,5 @@
 {
-  "acoustic_model_path": null,
+  "acoustic_model_path": "exp/edm_tts/dac/best_model",
   "bos_token_id": 1,
   "encoder_config": {
     "attn_dropout": 0.1,

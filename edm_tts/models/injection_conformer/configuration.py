@@ -13,7 +13,7 @@ class InjectionConformerConfig(PretrainedConfig):
             hidden_size=1024,
             num_semantic_tokens=1024,
 
-            acoustic_model_path=None,
+            acoustic_model_path="exp/edm_tts/dac/best_model",
 
             attn_flash=True,
 
