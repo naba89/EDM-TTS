@@ -10,21 +10,21 @@ class TextToSemanticWLenConfig(PretrainedConfig):
             bos_token_id=1,
             eos_token_id=2,
 
-            hidden_size=384,
+            hidden_size=512,
             semantic_vocab_size=1024,  # 1024 semantic tokens
             text_vocab_size=256,  # 256 byte tokens
 
             attn_flash=True,
 
-            main_encoder_num_heads=8,
-            main_encoder_num_layers=12,
+            main_encoder_num_heads=16,
+            main_encoder_num_layers=8,
             main_encoder_ff_mult=4,
             main_encoder_conv_kernel_size=5,
             main_encoder_attn_dropout=0.0,
             main_encoder_ff_dropout=0.0,
             main_encoder_conv_dropout=0.0,
 
-            length_predictor_num_heads=8,
+            length_predictor_num_heads=16,
             length_predictor_num_layers=4,
             length_predictor_ff_mult=4,
             length_predictor_conv_kernel_size=5,
