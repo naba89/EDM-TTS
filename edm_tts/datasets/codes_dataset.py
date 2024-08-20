@@ -88,8 +88,10 @@ class CodesDataset(datasets.GeneratorBasedBuilder):
             for i, (acoustic_tokens, semantic_tokens) in enumerate(zip(data["acoustic_codes"],
                                                                        data["semantic_codes"])):
                 _id_ = f"{id_}_{i}"
+                print(acoustic_tokens.shape, semantic_tokens.shape)
                 yield _id_, {
                     "id": _id_,
-                    "acoustic_tokens": acoustic_tokens,
+                    "length": acoustic_tokens.shape[0],
+                    "acoustic_tokens": acoustic_tokens.transpose(0, 1),
                     "semantic_tokens": semantic_tokens[None],
                 }
