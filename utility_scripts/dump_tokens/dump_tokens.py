@@ -142,6 +142,7 @@ def main():
     arg_parser.add_argument("--semantic_centroid_path", type=str, default=None)
     arg_parser.add_argument("--semantic_model", type=str, default="facebook/hubert-large-ll60k")
     arg_parser.add_argument("--semantic_layer_idx", type=int, default=18)
+    arg_parser.add_argument("--batch_size", type=int, default=32)
 
     arg_parser.add_argument("--output_dir", type=str, required=True)
     arg_parser.add_argument("--max_files_per_output_file", type=int, default=1000)
@@ -171,8 +172,8 @@ def main():
 
     audio_tokenizer = AudioTokenizer(acoustic_model=acoustic_model, semantic_model=semantic_model).eval().to(device)
 
-    batch_size = 32
-    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=False, drop_last=False, collate_fn=Collator(),
+    # batch_size = 32
+    dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False, drop_last=False, collate_fn=Collator(),
                             num_workers=32)
 
     dataloader = accelerator.prepare(dataloader)
@@ -239,7 +240,7 @@ def main():
 
             out_aggregate[name] = tokens_i
 
-        counter += batch_size
+        counter += args.batch_size
         if counter >= max_files_per_output_file:
             torch.save(out_aggregate, save_fname)
             out_aggregate = {}
