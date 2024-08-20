@@ -36,7 +36,6 @@ dataset_args:
   path: edm_tts/datasets/codes_dataset.py
   name: all
   streaming: True
-  n_val_shards: 0
   data_dir: /data/umeiro0/datasets/libri-light/unlab-codes
   cache_dir: cache/librilight_codes
 
