@@ -38,6 +38,7 @@ dataset_args:
   streaming: True
   n_val_shards: 0
   data_dir: data/librilight_codes
+  cache_dir: cache/librilight_codes
 
 training_segment_length: 15.36
 trust_remote_code: true
