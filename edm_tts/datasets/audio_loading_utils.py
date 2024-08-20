@@ -11,7 +11,7 @@ def load_code_segments(examples, segment_length=None, random_segment=False,
                        acoustic_downsample_factor=4,
                        semantic_sample_rate=16000, semantic_downsample_factor=4):
 
-    acoustic_tokens = torch.as_tensor(np.stack(examples['acoustic_tokens'], axis=0)).long()
+    acoustic_tokens = torch.as_tensor(np.stack(examples['acoustic_tokens'], axis=0)).long().transpose(1, 2)
     semantic_tokens = torch.as_tensor(np.stack(examples['semantic_tokens'], axis=0)).squeeze(1).long()
 
     # above will anyways fail if the tokens are not of the same length
