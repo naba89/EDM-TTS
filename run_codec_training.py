@@ -208,10 +208,10 @@ def main():
 
     # intialize generator and discriminator
     generator_config = DACConfig(**model_args.generator_args)
-    generator = DAC.from_config(generator_config).to(training_args.device)
+    generator = DAC(generator_config).to(training_args.device)
 
     discriminator_config = DACDiscriminatorConfig(**model_args.discriminator_args)
-    discriminator = DACDiscriminator.from_config(discriminator_config).to(training_args.device)
+    discriminator = DACDiscriminator(discriminator_config).to(training_args.device)
 
     with training_args.main_process_first(desc="dataset loading"):
         dataset = load_dataset(**data_args.dataset_args,
