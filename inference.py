@@ -31,8 +31,8 @@ def main():
     acoustic_model = DAC.from_pretrained(args.codec_model)
     audio_tokenizer = AudioTokenizer(acoustic_model=acoustic_model, semantic_model=semantic_model).eval().to(device)
 
-    t2s_model = TextToSemanticWLen.from_pretrained(args.t2s_model).eval().to(device)
     s2a_model = InjectionConformerModel.from_pretrained(args.s2a_model).eval().to(device)
+    t2s_model = TextToSemanticWLen.from_pretrained(args.t2s_model).eval().to(device)
 
     with torch.cuda.amp.autocast(dtype=torch.bfloat16), torch.inference_mode():
         prompt_tokens = audio_tokenizer.compute_codes_from_file(args.speaker_prompt)
