@@ -12,6 +12,7 @@ model_name_or_path: configs/injection_conformer/base_config
 cache_dir: cache/huggingface
 
 extra_model_params:
+  acoustic_model_path: subatomicseer/acoustic_tokenizer
   num_semantic_tokens: 1024
   hidden_size: 1024
   injection_layers: [4, 7, 10, 13]
