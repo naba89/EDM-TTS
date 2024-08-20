@@ -54,7 +54,9 @@
     ```bash
     # Train the Codec before running these commands (see Training section)
     # Check the script for further customization
-    python utility_scripts/dump_tokens/dump_tokens.py --dataset_name librilight --output_dir data/librilight_codes/ --codec_model exp/edm_tts/dac/best_model
+    python utility_scripts/dump_tokens/dump_tokens.py --dataset_name librilight-small --output_dir data/librilight_codes/ --codec_model exp/edm_tts/dac/best_model
+    python utility_scripts/dump_tokens/dump_tokens.py --dataset_name librilight-medium --output_dir data/librilight_codes/ --codec_model exp/edm_tts/dac/best_model
+    python utility_scripts/dump_tokens/dump_tokens.py --dataset_name librilight-large --output_dir data/librilight_codes/ --codec_model exp/edm_tts/dac/best_model
     python utility_scripts/dump_tokens/dump_tokens.py --dataset_name libriheavy-small --output_dir data/libriheavy_codes/ --codec_model exp/edm_tts/dac/best_model
     python utility_scripts/dump_tokens/dump_tokens.py --dataset_name libriheavy-medium --output_dir data/libriheavy_codes/ --codec_model exp/edm_tts/dac/best_model
     python utility_scripts/dump_tokens/dump_tokens.py --dataset_name libriheavy-large --output_dir data/libriheavy_codes/ --codec_model exp/edm_tts/dac/best_model

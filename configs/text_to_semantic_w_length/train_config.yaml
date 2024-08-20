@@ -41,7 +41,7 @@ dataset_args:
   path: edm_tts/datasets/text_speech_codes_dataset.py
   name: all
   num_proc: 128
-  data_dir: /data/utsubo0/datasets/libriheavy_codes/libriheavy-small_train
+  data_dir: data/libriheavy_codes
   cache_dir: cache/libriheavy_codes
 
 
@@ -52,9 +52,9 @@ max_train_steps: 300000
 # TrainingArguments
 do_train: true
 label_names: [input_ids]
-per_device_train_batch_size: 16
+per_device_train_batch_size: 32
 per_device_eval_batch_size: 32
-gradient_accumulation_steps: 2
+gradient_accumulation_steps: 1
 ddp_find_unused_parameters: false
 gradient_checkpointing: false
 gradient_checkpointing_kwargs:

@@ -24,10 +24,28 @@ def prepare_dataset(dataset_args):
 
 
 def get_dataset_args(dataset_name, split):
-    if dataset_name == "librilight":
+    if dataset_name == "librilight-small":
         return {
             "path": "edm_tts/datasets/librilight.py",
-            "name": "all",
+            "name": "small",
+            "split": split,
+            "data_dir": "data/libri-light/unlab",
+            "streaming": False,
+            "cache_dir": "cache/librilight",
+        }
+    elif dataset_name == "librilight-medium":
+        return {
+            "path": "edm_tts/datasets/librilight.py",
+            "name": "medium",
+            "split": split,
+            "data_dir": "data/libri-light/unlab",
+            "streaming": False,
+            "cache_dir": "cache/librilight",
+        }
+    elif dataset_name == "librilight-large":
+        return {
+            "path": "edm_tts/datasets/librilight.py",
+            "name": "large",
             "split": split,
             "data_dir": "data/libri-light/unlab",
             "streaming": False,
