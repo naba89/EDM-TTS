@@ -1,0 +1,90 @@
+
+# ModelArguments
+wandb_project: edm_tts
+
+run_name: text_to_semantic_w_length
+output_dir: exp/edm_tts/text_to_semantic_w_length
+overwrite_output_dir: false
+
+model_type: text_to_semantic_w_length
+model_name_or_path: configs/text_to_semantic_w_length/base_config
+
+cache_dir: cache/huggingface
+
+extra_model_params:
+  hidden_size: 384
+  text_vocab_size: 256
+  semantic_vocab_size: 1024
+  attn_flash: true
+
+  main_encoder_args:
+    depth: 12
+    heads: 8
+    ff_mult: 4
+    conv_kernel_size: 5
+    attn_dropout: 0.0
+    ff_dropout: 0.0
+    conv_dropout: 0.0
+
+  length_predictor_args:
+    depth: 4
+    heads: 8
+    ff_mult: 4
+    conv_kernel_size: 5
+    attn_dropout: 0.0
+    ff_dropout: 0.0
+    conv_dropout: 0.0
+
+# DataTrainingArguments
+
+dataset_args:
+  path: edm_tts/datasets/text_speech_codes_dataset.py
+  name: all
+  num_proc: 128
+  data_dir: data/libriheavy_codes
+
+
+preprocessing_only: false
+
+max_train_steps: 300000
+
+# TrainingArguments
+do_train: true
+label_names: [input_ids]
+per_device_train_batch_size: 32
+per_device_eval_batch_size: 32
+gradient_accumulation_steps: 1
+ddp_find_unused_parameters: false
+gradient_checkpointing: false
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+learning_rate: 0.00025
+weight_decay: 0.0
+adam_beta1: 0.8
+adam_beta2: 0.99
+adam_epsilon: 0.00000001
+max_grad_norm: 0.5
+max_steps: 300000
+lr_scheduler_type: cosine
+warmup_steps: 4000
+logging_strategy: steps
+logging_steps: 100
+save_strategy: steps
+save_steps: 5000
+save_total_limit: 2
+seed: 42
+bf16: true
+tf32: true
+dataloader_drop_last: true
+dispatch_batches: false
+dataloader_num_workers: 32
+dataloader_persistent_workers: true
+dataloader_pin_memory: false
+remove_unused_columns: false
+metric_for_best_model: loss
+greater_is_better: false
+optim: adamw_torch_fused
+group_by_length: true
+report_to: [wandb]
+torch_compile: true
+save_safetensors: true

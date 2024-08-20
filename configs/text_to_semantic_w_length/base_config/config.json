@@ -1,0 +1,39 @@
+{
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_size": 384,
+  "length_predictor_args": {
+    "attn_dropout": 0.0,
+    "attn_flash": true,
+    "conv_dropout": 0.0,
+    "conv_kernel_size": 5,
+    "depth": 4,
+    "dim_head": 48,
+    "ff_dropout": 0.0,
+    "ff_mult": 4,
+    "heads": 8
+  },
+  "main_encoder_args": {
+    "attn_dropout": 0.0,
+    "attn_flash": true,
+    "conv_dropout": 0.0,
+    "conv_kernel_size": 5,
+    "depth": 12,
+    "dim_head": 48,
+    "ff_dropout": 0.0,
+    "ff_mult": 4,
+    "heads": 8
+  },
+  "model_type": "text_to_semantic_w_length",
+  "pad_token_id": 0,
+  "semantic_vocab_size": 1024,
+  "special_tokens": {
+    "mask": 4,
+    "pad": 0,
+    "sep": 3,
+    "speech": 2,
+    "text": 1
+  },
+  "text_vocab_size": 256,
+  "transformers_version": "4.44.0"
+}

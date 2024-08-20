@@ -1,0 +1,89 @@
+
+# ModelArguments
+wandb_project: edm_tts
+
+run_name: injection_conformer
+output_dir: exp/edm_tts/injection_conformer
+overwrite_output_dir: false
+
+model_type: injection_conformer
+model_name_or_path: configs/injection_conformer/base_config
+
+cache_dir: cache/huggingface
+
+extra_model_params:
+  num_semantic_tokens: 1024
+  hidden_size: 1024
+  injection_layers: [4, 7, 10, 13]
+  attn_flash: true
+
+  residual: true
+  use_injection: true
+  loss_all: false
+
+  encoder_config:
+    depth: 16
+    heads: 16
+    ff_mult: 4
+    conv_kernel_size: 5
+    attn_dropout: 0.0
+    ff_dropout: 0.0
+    conv_dropout: 0.0
+
+
+# DataTrainingArguments
+dataset_args:
+  path: edm_tts/datasets/codes_dataset.py
+  name: all
+  streaming: True
+  n_val_shards: 0
+  data_dir: data/librilight_codes
+
+training_segment_length: 15.36
+trust_remote_code: true
+
+preprocessing_only: false
+
+max_train_steps: 100000
+
+# TrainingArguments
+do_train: true
+ignore_data_skip: true
+evaluation_strategy: "no"
+label_names: [acoustic_tokens]
+per_device_train_batch_size: 16
+per_device_eval_batch_size: 16
+gradient_accumulation_steps: 2
+ddp_find_unused_parameters: false
+gradient_checkpointing: false
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+learning_rate: 0.0003
+weight_decay: 0.0
+adam_beta1: 0.8
+adam_beta2: 0.99
+adam_epsilon: 0.00000001
+max_grad_norm: 0.5
+max_steps: 100000
+lr_scheduler_type: cosine
+warmup_steps: 4000
+logging_strategy: steps
+logging_steps: 100
+save_strategy: steps
+save_steps: 5000
+save_total_limit: 2
+seed: 42
+bf16: true
+tf32: true
+dataloader_drop_last: true
+dispatch_batches: false
+dataloader_num_workers: 32
+dataloader_persistent_workers: true
+dataloader_pin_memory: false
+remove_unused_columns: true
+metric_for_best_model: loss
+greater_is_better: false
+optim: adamw_torch_fused
+group_by_length: false
+report_to: [wandb]
+torch_compile: true

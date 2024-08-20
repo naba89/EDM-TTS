@@ -1,0 +1,114 @@
+
+# ModelArguments
+
+wandb_project: edm_tts
+output_dir: exp/edm_tts/dac
+
+generator_args:
+  sample_rate: 16000
+  encoder_dim: 64
+  encoder_rates: [ 2, 4, 5, 8 ]
+  decoder_dim: 1536
+  decoder_rates: [ 8, 5, 4, 2 ]
+  n_codebooks: 12
+  codebook_size: 1024
+  codebook_dim: 8
+  quantizer_dropout: 0.5
+
+discriminator_args:
+  sample_rate: 16000
+  rates: []
+  periods: [2, 3, 5, 7, 11]
+  fft_sizes: [2048, 1024, 512]
+  bands:
+    - [ 0.0, 0.1 ]
+    - [ 0.1, 0.25 ]
+    - [ 0.25, 0.5 ]
+    - [ 0.5, 0.75 ]
+    - [ 0.75, 1.0 ]
+
+gen_optimizer_name: AdamW
+gen_optimizer_args:
+  lr: 0.0001
+  betas: [0.8, 0.99]
+  fused: true
+
+disc_optimizer_name: AdamW
+disc_optimizer_args:
+  lr: 0.0001
+  betas: [0.8, 0.99]
+  fused: true
+
+gen_scheduler_name: ExponentialLR
+gen_scheduler_args:
+  gamma: 0.999996
+
+disc_scheduler_name: ExponentialLR
+disc_scheduler_args:
+  gamma: 0.999996
+
+# loss args
+waveform_args: null
+multi_scale_stft_args: null
+mel_spectrogram_args:
+  n_mels: [ 5, 10, 20, 40, 80, 160, 320 ]
+  window_lengths: [ 32, 64, 128, 256, 512, 1024, 2048 ]
+  mel_fmin: [ 0, 0, 0, 0, 0, 0, 0 ]
+  mel_fmax: [ null, null, null, null, null, null, null ]
+  power: 1.0
+  clamp_eps: 1.0e-5
+  mag_weight: 0.0
+
+lambdas:
+  mel/loss: 15.0
+  adv/feat_loss: 2.0
+  adv/gen_loss: 1.0
+  vq/commitment_loss: 0.25
+  vq/codebook_loss: 1.0
+
+
+# DataTrainingArguments
+
+preprocessing_only: false
+
+dataset_args:
+  path: edm_tts/datasets/librilight.py
+  name: all
+  split: train
+  segment_length: 5.0
+  data_dir: data/libri-light/unlab
+
+remove_columns:
+  - file
+  - offset
+  - num_frames
+  - padding
+  - id
+
+training_segment_length: 0.38
+silence_threshold: -40
+volume_normalize: -16
+validation_segment_length: 5.0
+num_samples_to_log: 4
+
+validation_split: 16
+num_shards: 1024
+shuffle_buffer_size: 10000
+
+
+# TrainingArguments
+seed: 42
+per_device_train_batch_size: 32
+per_device_eval_batch_size: 4
+ddp_find_unused_parameters: false
+report_to: ["wandb"]
+dataloader_num_workers: 16
+dataloader_persistent_workers: true
+dataloader_pin_memory: false
+
+num_train_epochs: 100
+max_steps: 100000
+
+save_steps: 10000
+eval_steps: 1000
+logging_steps: 100

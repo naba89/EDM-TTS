@@ -1,0 +1,30 @@
+{
+  "acoustic_model_path": null,
+  "bos_token_id": 1,
+  "encoder_config": {
+    "attn_dropout": 0.1,
+    "attn_flash": true,
+    "conv_dropout": 0.1,
+    "conv_kernel_size": 5,
+    "depth": 16,
+    "dim_head": 64,
+    "ff_dropout": 0.1,
+    "ff_mult": 4,
+    "heads": 16
+  },
+  "eos_token_id": 2,
+  "hidden_size": 1024,
+  "injection_layers": [
+    4,
+    7,
+    10,
+    13
+  ],
+  "loss_all": false,
+  "model_type": "injection_conformer",
+  "num_semantic_tokens": 1024,
+  "pad_token_id": 0,
+  "residual": true,
+  "transformers_version": "4.44.0",
+  "use_injection": true
+}

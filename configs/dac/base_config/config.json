@@ -1,0 +1,23 @@
+{
+  "codebook_dim": 8,
+  "codebook_size": 1024,
+  "decoder_dim": 1536,
+  "decoder_rates": [
+    8,
+    5,
+    4,
+    2
+  ],
+  "encoder_dim": 64,
+  "encoder_rates": [
+    2,
+    4,
+    5,
+    8
+  ],
+  "model_type": "dac",
+  "n_codebooks": 12,
+  "quantizer_dropout": 0.5,
+  "sample_rate": 16000,
+  "transformers_version": "4.44.0"
+}

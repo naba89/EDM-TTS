@@ -1,0 +1,11 @@
+torch>=2.3.0
+torchaudio
+accelerate
+datasets
+transformers
+deepspeed
+einops
+wandb
+npy-append-array
+faiss-cpu
+git+https://github.com/descriptinc/audiotools
