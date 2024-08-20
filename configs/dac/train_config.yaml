@@ -76,6 +76,7 @@ dataset_args:
   name: all
   split: train
   segment_length: 60.0
+  num_proc: 128
   data_dir: data/libri-light/unlab
   cache_dir: cache/libri-light
 
