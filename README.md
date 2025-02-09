@@ -1,4 +1,4 @@
-# EDM-TTS
+# ReviewCodes
 
 ## Installation
 1. Prepare the environment:
