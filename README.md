@@ -1,4 +1,4 @@
-# EDM-TTS
+# Official Code of [EDM-TTS](https://openreview.net/forum?id=c7vkDg558Z)
 
 ## Installation
 1. Prepare the environment:
@@ -96,3 +96,7 @@ python inference.py --text "Hello, how are you?" \
                     --s2a_model "exp/edm_tts/injection_conformer/best_model" \
                     --t2s_model "exp/edm_tts/text_to_semantic_w_length/best_model" 
 ```
+
+## 📄 License 
+Custom MIT-style license — non-commercial use only. See [LICENSE](./LICENSE) for details.
+
