@@ -1,5 +1,9 @@
 # Official Code of [EDM-TTS](https://openreview.net/forum?id=c7vkDg558Z)
 
+<p align="center">
+  <img src="./edm-tts-overview.png" alt="Model Architecture">
+</p>
+
 ## Installation
 1. Prepare the environment:
     ```bash
