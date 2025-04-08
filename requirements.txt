@@ -9,3 +9,5 @@ wandb
 npy-append-array
 faiss-cpu
 git+https://github.com/descriptinc/audiotools
+git+https://github.com/supertone-inc/super-monotonic-align.git
+git+https://github.com/resemble-ai/monotonic_align.git
