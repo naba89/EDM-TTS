@@ -58,3 +58,15 @@ def random_topk_mask(mask_len, probs, distribution, temperature=1.0):
     # Masks tokens with lower confidence.
     mask = confidence < cut_off
     return mask
+
+
+# CTC decoding: remove consecutive duplicates only if not separated by blank tokens
+def ctc_decode(_pred_ids, blank_token=0):
+    decoded = []
+    prev_token = None
+    for token in _pred_ids:
+        if token != blank_token:  # Ignore blank token (0)
+            if token != prev_token:
+                decoded.append(token)  # Append token if different from previous token
+        prev_token = token
+    return torch.stack(decoded)

@@ -106,11 +106,16 @@ class Attend(nn.Module):
 
         # pytorch 2.0 flash attn: q, k, v, mask, dropout, causal, softmax_scale
         # depending on pytorch version, the function signature changes
-        with torch.nn.attention.sdpa_kernel(get_sdpa_backend_list(config)):
-        # with torch.backends.cuda.sdp_kernel(**config._asdict()):
-            out = F.scaled_dot_product_attention(
-                q, k, v, attn_mask=mask, dropout_p=self.dropout if self.training else 0.0, is_causal=causal
-            )
+        if hasattr(torch.nn, "attention"):
+            with torch.nn.attention.sdpa_kernel(get_sdpa_backend_list(config)):
+                out = F.scaled_dot_product_attention(
+                    q, k, v, attn_mask=mask, dropout_p=self.dropout if self.training else 0.0, is_causal=causal
+                )
+        else:
+            with torch.backends.cuda.sdp_kernel(**config._asdict()):
+                out = F.scaled_dot_product_attention(
+                    q, k, v, attn_mask=mask, dropout_p=self.dropout if self.training else 0.0, is_causal=causal
+                )
 
         return out
 
